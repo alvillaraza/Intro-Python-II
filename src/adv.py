@@ -6,18 +6,18 @@ import textwrap
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", Item('something')),
+                     "North of you, the cave mount beckons", 'backpack'),
     #  {
     # 'name' :'Outside Cave Entrance',
     # 'desc': 'North of you, the cave mount beckons'
     # }
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", 'shovel'),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", 'key'),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
@@ -38,17 +38,27 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+item = {
+  'backpack': Item('Backpack', 'used for storing items'),
+  'shovel': Item('Shovel', 'used for digging'),
+  'key': Item('Key', 'used for opening locks'),
+  # 'backpack': {
+  #   name: 'Backpack',
+  #   desc: 'used for storing items'
+  # }
+}
+
 #
 # Main
 #
 
 # # Make a new player object that is currently in the 'outside' room.
-me = Player('Alexis', room['outside'])
+me = Player('Alexis', room['outside'], item['backpack'])
 # Write a loop that:
 while True:
     # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
-    print(me.name, me.current_room.name, me.current_room.desc)
+    print(me.name, me.current_room.name, me.current_room.desc, me.current_room.item.name)
     for line in textwrap.wrap(me.current_room.desc, 40):
         print(line)
 

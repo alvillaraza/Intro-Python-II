@@ -2,13 +2,13 @@
 # currently.
 
 class Player:
-  def __init__(self, name, current_room, list_item):
+  def __init__(self, name, current_room, has_item=None):
     self.name = name
     self.current_room = current_room
-    self.list = PlayerList(list_item)
+    self.has_item = PlayerItem(has_item)
 
-class PlayerList:
-    def __init__(self, item):
-        self.item = item
+class PlayerItem:
+    def __init__(self, has_item):
+        self.has_item = has_item
 
 #items: backpack, shovel, key

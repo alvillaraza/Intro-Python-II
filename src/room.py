@@ -7,7 +7,11 @@ class Room:
         self.item = RoomItem(item)
 
 
-class RoomItem:
-    def __init__(self, item):
-        self.item = item
+# class RoomItem:
+#     def __init__(self, item):
+#         self.item = item
 
+class RoomItem:
+  def __init__(self, name, description=None):
+    self.name = name
+    self.description = description

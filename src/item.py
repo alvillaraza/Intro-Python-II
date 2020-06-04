@@ -10,12 +10,12 @@ class Item:
     self.name = name
     self.description = description
 
-item = {
-  'backpack': Item('Backpack', 'used for storing items'),
-  'shovel': Item('Shovel', 'used for digging'),
-  'key': Item('Key', 'used for opening locks'),
-  # 'backpack': {
-  #   name: 'Backpack',
-  #   desc: 'used for storing items'
-  # }
-}
+# item = {
+#   'backpack': Item('Backpack', 'used for storing items'),
+#   'shovel': Item('Shovel', 'used for digging'),
+#   'key': Item('Key', 'used for opening locks'),
+#   # 'backpack': {
+#   #   name: 'Backpack',
+#   #   desc: 'used for storing items'
+#   # }
+# }
