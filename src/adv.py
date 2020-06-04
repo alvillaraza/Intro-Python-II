@@ -1,21 +1,12 @@
-# class Room:
-#     def __init__(self, name, desc):
-#         self.name = name
-#         self.desc = desc
-
-
-# class Player:
-#     def __init__(self, name, room):
-#         self.name = name
-#         self.room = room
-
 from room import Room
 from player import Player
+from item import Item
+import textwrap
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", Item('something')),
     #  {
     # 'name' :'Outside Cave Entrance',
     # 'desc': 'North of you, the cave mount beckons'
@@ -52,40 +43,40 @@ room['treasure'].s_to = room['narrow']
 #
 
 # # Make a new player object that is currently in the 'outside' room.
-# currentPlayer = Player(input("what is your name?"), input("what room?"))
-me = Player('alexis', room['outside'])
+me = Player('Alexis', room['outside'])
 # Write a loop that:
 while True:
     # * Prints the current room name
-    print(me.name, me.room.name, me.room.desc)
 # * Prints the current description (the textwrap module might be useful here).
+    print(me.name, me.current_room.name, me.current_room.desc)
+    for line in textwrap.wrap(me.current_room.desc, 40):
+        print(line)
+
 # * Waits for user input and decides what to do.
-    direction = input('Where would you like to go?')
+    direction = input('Where would you like to go? (n/e/s/w)')
     print(direction)
-#
+
+
 
 # If the user enters a cardinal direction, attempt to move to the room there.
 
-    # me.room = me.room.{direction}_to
     if direction == "n":
-        me.room = me.room.n_to
-        print(me.room.name)
+        me.current_room = me.current_room.n_to
+        print(me.current_room.name)
 
     elif direction == 's':
-        me.room = me.room.s_to
-        print(me.room.name)
+        me.current_room = me.current_room.s_to
+        print(me.current_room.name)
 
     elif direction == 'e':
-        me.room = me.room.e_to
-        print(me.room)
+        me.current_room = me.current_room.e_to
+        print(me.current_room)
 
     elif direction == 'w':
-        me.room = me.room.w_to
-        print(me.room.name)
+        me.current_room = me.current_room.w_to
+        print(me.current_room.name)
 
-    # elif:
-    #     print("You're lost")
-    
+  
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
