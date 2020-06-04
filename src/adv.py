@@ -58,13 +58,13 @@ me = Player('Alexis', room['outside'], item['backpack'])
 while True:
     # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
-    print(me.name, me.current_room.name, me.current_room.desc, me.current_room.item.name)
-    for line in textwrap.wrap(me.current_room.desc, 40):
+    print(f"You are in the {me.current_room.name}. You see the following item: {me.current_room.item.name}")
+    for line in textwrap.wrap(me.current_room.desc, 50):
         print(line)
 
 # * Waits for user input and decides what to do.
     direction = input('Where would you like to go? (n/e/s/w)')
-    print(direction)
+    print(f"You went {direction}.")
 
 
 
