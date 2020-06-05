@@ -10,5 +10,8 @@ class Player:
   def get_item(self, item):
     self.has_item = item
     self.has_item.on_take()
+  def drop_item(self):
+    self.has_item.on_drop()
+    self.has_item = RoomItem()
   
 

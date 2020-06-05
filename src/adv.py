@@ -67,12 +67,13 @@ while True:
     action = input("What would you like to do? (take[item], drop[item])")
     if action == f"take {me.current_room.item.name}":
         # if {me.current_room.item == None}:
-            me.get_item(me.current_room.item)
-            me.current_room.remove_item()
-           
-       
+        me.get_item(me.current_room.item)
+        me.current_room.remove_item()
         print(f"{me.current_room.name} contains the following items: {me.current_room.item.name}")
-        
+
+    if action == f"drop {me.has_item.name}":
+        me.current_room.add_item(me.has_item)
+        me.drop_item()
         #else "the room is empty"
     # if action == f"drop {me.current_room.item.name}":
 
