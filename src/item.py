@@ -5,17 +5,9 @@
 # Hint: the name should be one word for ease in parsing later.
 # This will be the base class for specialized item types to be declared later.
 
-class Item:
-  def __init__(self, name, description):
+class RoomItem:
+  def __init__(self, name=None, description=None):
     self.name = name
     self.description = description
-
-# item = {
-#   'backpack': Item('Backpack', 'used for storing items'),
-#   'shovel': Item('Shovel', 'used for digging'),
-#   'key': Item('Key', 'used for opening locks'),
-#   # 'backpack': {
-#   #   name: 'Backpack',
-#   #   desc: 'used for storing items'
-#   # }
-# }
+  def on_take(self):
+    print("You have picked up:", self.name)

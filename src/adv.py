@@ -1,6 +1,6 @@
 from room import Room
 from player import Player
-from item import Item
+from item import RoomItem
 import textwrap
 # Declare all the rooms
 
@@ -39,9 +39,9 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 item = {
-  'backpack': Item('Backpack', 'used for storing items'),
-  'shovel': Item('Shovel', 'used for digging'),
-  'key': Item('Key', 'used for opening locks'),
+  'backpack': RoomItem('Backpack', 'used for storing items'),
+  'shovel': RoomItem('Shovel', 'used for digging'),
+  'key': RoomItem('Key', 'used for opening locks'),
   # 'backpack': {
   #   name: 'Backpack',
   #   desc: 'used for storing items'
@@ -53,7 +53,7 @@ item = {
 #
 
 # # Make a new player object that is currently in the 'outside' room.
-me = Player('Alexis', room['outside'], item['backpack'])
+me = Player('Alexis', room['outside'])
 # Write a loop that:
 while True:
     # * Prints the current room name
@@ -63,6 +63,22 @@ while True:
         print(line)
 
 # * Waits for user input and decides what to do.
+    print(me.current_room.item.name)
+    action = input("What would you like to do? (take[item], drop[item])")
+    if action == f"take {me.current_room.item.name}":
+        # if {me.current_room.item == None}:
+            me.get_item(me.current_room.item)
+            me.current_room.remove_item()
+           
+       
+        print(f"{me.current_room.name} contains the following items: {me.current_room.item.name}")
+        
+        #else "the room is empty"
+    # if action == f"drop {me.current_room.item.name}":
+
+    
+    #### if action == "drop {}"####
+
     direction = input('Where would you like to go? (n/e/s/w)')
     print(f"You went {direction}.")
 
@@ -85,6 +101,9 @@ while True:
     elif direction == 'w':
         me.current_room = me.current_room.w_to
         print(me.current_room.name)
+    
+    elif direction == 'i' or direction == 'inventory':
+        print(me.has_item.name, me.current_room.item.name)
 
   
 # Print an error message if the movement isn't allowed.

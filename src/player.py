@@ -1,14 +1,14 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
+from item import RoomItem
+from room import Room
 
 class Player:
-  def __init__(self, name, current_room, has_item=None):
+  def __init__(self, name, current_room, has_item="this one?"):
     self.name = name
     self.current_room = current_room
-    self.has_item = PlayerItem(has_item)
+  def get_item(self, item):
+    self.has_item = item
+    self.has_item.on_take()
+  
 
-class PlayerItem:
-    def __init__(self, has_item):
-        self.has_item = has_item
-
-#items: backpack, shovel, key
