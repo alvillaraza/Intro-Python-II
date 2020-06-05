@@ -58,22 +58,22 @@ me = Player('Alexis', room['outside'])
 while True:
     # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
-    print(f"You are in the {me.current_room.name}. You see the following item: {me.current_room.item.name}")
+    print(f"You are in the {me.current_room.name} You see the following item: {me.current_room.items[0].name}")
     for line in textwrap.wrap(me.current_room.desc, 50):
         print(line)
 
 # * Waits for user input and decides what to do.
-    print(me.current_room.item.name)
+    print(me.current_room.items[0].name)
     action = input("What would you like to do? (take[item], drop[item])")
-    if action == f"take {me.current_room.item.name}":
+    if action == f"take {me.current_room.items[0].name}":
         # if {me.current_room.item == None}:
-        me.get_item(me.current_room.item)
-        me.current_room.remove_item()
-        print(f"{me.current_room.name} contains the following items: {me.current_room.item.name}")
+        me.get_item(me.current_room.items[0])
+        me.current_room.remove_item(me.current_room.items[0])
+        print(f"{me.current_room.name} contains the following items: {me.current_room.items[0].name}")
 
-    if action == f"drop {me.has_item.name}":
-        me.current_room.add_item(me.has_item)
-        me.drop_item()
+    # if action == f"drop {me.has_item.name}":
+    #     me.current_room.add_item(me.has_item)
+    #     me.drop_item()
         #else "the room is empty"
     # if action == f"drop {me.current_room.item.name}":
 
@@ -104,7 +104,7 @@ while True:
         print(me.current_room.name)
     
     elif direction == 'i' or direction == 'inventory':
-        print(me.has_item.name, me.current_room.item.name)
+        print(me.has_item.name, me.current_room.items[0].name)
 
   
 # Print an error message if the movement isn't allowed.

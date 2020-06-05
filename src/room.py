@@ -8,9 +8,9 @@ class Room:
     def __init__(self, name, desc, item=None):
         self.name = name
         self.desc = desc
-        self.item = [RoomItem(item)]
-    def remove_item(self):
-        self.item = RoomItem()
-    def add_item(self, item):
-        self.item = item
+        self.items = [RoomItem(item), RoomItem()]
+    def remove_item(self, item):
+        self.items.remove(item)
+    # def add_item(self, item):
+    #     self.item = item
 
